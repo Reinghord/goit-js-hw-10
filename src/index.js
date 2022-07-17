@@ -30,10 +30,7 @@ searchInput.addEventListener(
     //onSuccess returns array of object as per searchText
     //Depending on number of object returned, will create corresponding markup
     //On error will display Notify message
-    fetchCountries(searchText)
-      .then(onSuccessFetch)
-      .then(createMarkup)
-      .catch(onError);
+    fetchCountries(searchText).then(createMarkup).catch(onError);
   }, DEBOUNCE_DELAY)
 );
 
@@ -54,9 +51,12 @@ function markupClear() {
 // }
 
 //Function to parse fetch response in json
-function onSuccessFetch(response) {
-  return response.json();
-}
+// function onSuccessFetch(response) {
+//   if (!response.ok) {
+//     throw new Error(response.status);
+//   }
+//   return response.json();
+// }
 
 //Function to create markup depending on how many objects returned from API
 function createMarkup(data) {
