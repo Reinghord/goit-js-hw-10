@@ -53,28 +53,28 @@ function createMarkup(data) {
   } else {
     onDataEqualOne(data);
   }
+}
 
-  function onDataMoreTen() {
-    markupClear();
-    Notify.info('Too many matches found. Please enter a more specific name.');
-  }
+function onDataMoreTen() {
+  markupClear();
+  Notify.info('Too many matches found. Please enter a more specific name.');
+}
 
-  function onDataLessTenMoreTwo(data) {
-    markupClear();
-    const markup = data.map(object => {
-      return `<p style="font-size: 16px"><img src="${object.flags.svg}" alt="flag" width="50" height"50" /> ${object.name.official}</p>`;
-    });
-    renderData.insertAdjacentHTML('beforeend', markup.join(''));
-  }
+function onDataLessTenMoreTwo(data) {
+  markupClear();
+  const markup = data.map(object => {
+    return `<p style="font-size: 16px"><img src="${object.flags.svg}" alt="flag" width="50" height"50" /> ${object.name.official}</p>`;
+  });
+  renderData.insertAdjacentHTML('beforeend', markup.join(''));
+}
 
-  function onDataEqualOne(data) {
-    markupClear();
-    renderData.innerHTML = `
+function onDataEqualOne(data) {
+  markupClear();
+  renderData.innerHTML = `
           <p style="font-size: 36px"><img src="${
             data[0].flags.svg
           }" alt="flag" width="50" height"50" /> ${data[0].name.official}</p>
         <p><b>Capital:</b> ${data[0].capital}</p>
         <p><b>Population:</b> ${data[0].population}</p>
         <p><b>Languages:</b> ${Object.values(data[0].languages)}</p>`;
-  }
 }
